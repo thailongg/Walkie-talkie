@@ -51,4 +51,28 @@ void Espnow::sendLargeData(const uint8_t *data, size_t len) {
   }
 }
 
+void Espnow::onRecv(const uint8_t *mac, const uint8_t *incomingData, int len) {  
+  int buf_size = len/2;
+  int16_t buf_recv[buf_size];  
+  for(int i = 0; i < buf_size; i++) {
+    buf_recv[i] = (int16_t)(incomingData[i*2] | (incomingData[i*2 + 1] << 8));
+    // if(Serial_ON)
+      // Serial.printf("%ld\n", buf_recv[i]);
+  }
+  // size_t bytes_written;
+  // i2s_write(I2S_NUM_0, sample_received, len/2 * sizeof(int16_t), &bytes_written, portMAX_DELAY);
+  AudioTx::write(buf_recv, buf_size);
+}
 
+// void Espnow::onRecv(const uint8_t *mac, const uint8_t *incomingData, int len) {  // => 16 bit 
+//   int buf_size = len;
+//   int16_t buf_recv[buf_size];  
+//   for(int i = 0; i < buf_size; i++) {
+//     buf_recv[i] = (int16_t)(incomingData[i];
+//     // if(Serial_ON)
+//       // Serial.printf("%ld\n", buf_recv[i]);
+//   }
+  // size_t bytes_written;
+//   // i2s_write(I2S_NUM_0, sample_received, len/2 * sizeof(int16_t), &bytes_written, portMAX_DELAY);
+//   AudioTx::write(buf_recv, buf_size);
+// }

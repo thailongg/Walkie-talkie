@@ -16,6 +16,6 @@ class AudioTx : public I2SConfig {
       void play_doremi();
       esp_err_t start() override;
       esp_err_t stop() override;
-      size_t write( int16_t *sample, int count);
+      static size_t write( int16_t *sample, int count);
 
 };

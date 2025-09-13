@@ -2,6 +2,7 @@
 
 #include <esp_now.h>
 #include <WiFi.h>
+#include<AudioTx.h>
 
 #ifdef CONFIG_IDF_TARGET_ESP32  //(esp32_classic_is_sender)
   const uint8_t peerAddress[6] = {0x34, 0x85, 0x18, 0xb5, 0x34, 0xec}; //  => this is peerAddress of esp32_s3
@@ -32,5 +33,6 @@ class Espnow {
       void print_infor();
       void start();    
       void sendLargeData(const uint8_t *data, size_t len);
+      static void onRecv(const uint8_t *mac, const uint8_t *incomingData, int len);
       static void onSent(const uint8_t *mac_addr, esp_now_send_status_t status);
 };
