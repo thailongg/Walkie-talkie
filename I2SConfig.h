@@ -11,15 +11,16 @@ extern const i2s_config_t i2s_rx_config;
 extern const i2s_pin_config_t i2s_rx_pins;
 extern const i2s_config_t i2s_tx_config;
 extern const i2s_pin_config_t i2s_tx_pins;
+extern const i2s_config_t DAC_i2s_tx_config;
 
 #ifdef CONFIG_IDF_TARGET_ESP32
-  #define I2S_MIC_SERIAL_CLOCK_RX GPIO_NUM_32
-  #define I2S_MIC_LEFT_RIGHT_CLOCK_RX GPIO_NUM_25
-  #define I2S_MIC_SERIAL_DATA_RX GPIO_NUM_33
+  #define I2S_MIC_SERIAL_CLOCK_RX GPIO_NUM_18
+  #define I2S_MIC_LEFT_RIGHT_CLOCK_RX GPIO_NUM_19
+  #define I2S_MIC_SERIAL_DATA_RX GPIO_NUM_5
 
-  #define I2S_MIC_SERIAL_CLOCK_TX GPIO_NUM_18
-  #define I2S_MIC_LEFT_RIGHT_CLOCK_TX GPIO_NUM_19
-  #define I2S_MIC_SERIAL_DATA_TX GPIO_NUM_5
+  #define I2S_MIC_SERIAL_CLOCK_TX GPIO_NUM_25
+  #define I2S_MIC_LEFT_RIGHT_CLOCK_TX GPIO_NUM_32
+  #define I2S_MIC_SERIAL_DATA_TX GPIO_NUM_33
 #endif
 
 #ifdef CONFIG_IDF_TARGET_ESP32S3

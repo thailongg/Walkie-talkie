@@ -7,7 +7,7 @@
 
 extern int SAMPLE_RATE;
 
-class AudioTx : public I2SConfig {
+class DACAudioTx : public I2SConfig {
   protected: 
       void playTone(float freq, int duration_ms = 500);
   public:
@@ -15,9 +15,9 @@ class AudioTx : public I2SConfig {
       // esp_err_t init();
       void play_doremi();
       esp_err_t start() override;
-      esp_err_t start_DAC();
+      // esp_err_t start_DAC();
       esp_err_t stop() override;
-      static size_t write( int16_t *sample, int count);
-      static size_t DAC_write( uint8_t *sample, int count);
+      // static size_t write( int16_t *sample, int count);
+      static size_t write( uint8_t *sample, int count);
 
 };
